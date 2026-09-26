@@ -10,33 +10,148 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteRouteImport } from './routes/admin/route'
+import { Route as EmergencyRouteImport } from './routes/emergency'
+import { Route as PharmaciesRouteImport } from './routes/pharmacies'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminInventoryRouteImport } from './routes/admin/inventory'
+import { Route as AdminPharmaciesRouteImport } from './routes/admin/pharmacies'
+import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
+import { Route as PharmacyIdRouteImport } from './routes/pharmacy.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRouteRoute = AdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmergencyRoute = EmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PharmaciesRoute = PharmaciesRouteImport.update({
+  id: '/pharmacies',
+  path: '/pharmacies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminInventoryRoute = AdminInventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminPharmaciesRoute = AdminPharmaciesRouteImport.update({
+  id: '/pharmacies',
+  path: '/pharmacies',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const PharmacyIdRoute = PharmacyIdRouteImport.update({
+  id: '/pharmacy/$id',
+  path: '/pharmacy/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
+  '/emergency': typeof EmergencyRoute
+  '/pharmacies': typeof PharmaciesRoute
+  '/search': typeof SearchRoute
+  '/admin/inventory': typeof AdminInventoryRoute
+  '/admin/pharmacies': typeof AdminPharmaciesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/pharmacy/$id': typeof PharmacyIdRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/emergency': typeof EmergencyRoute
+  '/pharmacies': typeof PharmaciesRoute
+  '/search': typeof SearchRoute
+  '/admin/inventory': typeof AdminInventoryRoute
+  '/admin/pharmacies': typeof AdminPharmaciesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/pharmacy/$id': typeof PharmacyIdRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
+  '/emergency': typeof EmergencyRoute
+  '/pharmacies': typeof PharmaciesRoute
+  '/search': typeof SearchRoute
+  '/admin/inventory': typeof AdminInventoryRoute
+  '/admin/pharmacies': typeof AdminPharmaciesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/pharmacy/$id': typeof PharmacyIdRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/emergency'
+    | '/pharmacies'
+    | '/search'
+    | '/admin/inventory'
+    | '/admin/pharmacies'
+    | '/admin/settings'
+    | '/pharmacy/$id'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/emergency'
+    | '/pharmacies'
+    | '/search'
+    | '/admin/inventory'
+    | '/admin/pharmacies'
+    | '/admin/settings'
+    | '/pharmacy/$id'
+    | '/admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/emergency'
+    | '/pharmacies'
+    | '/search'
+    | '/admin/inventory'
+    | '/admin/pharmacies'
+    | '/admin/settings'
+    | '/pharmacy/$id'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRouteRoute: typeof AdminRouteRouteWithChildren
+  EmergencyRoute: typeof EmergencyRoute
+  PharmaciesRoute: typeof PharmaciesRoute
+  SearchRoute: typeof SearchRoute
+  PharmacyIdRoute: typeof PharmacyIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +163,97 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emergency': {
+      id: '/emergency'
+      path: '/emergency'
+      fullPath: '/emergency'
+      preLoaderRoute: typeof EmergencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pharmacies': {
+      id: '/pharmacies'
+      path: '/pharmacies'
+      fullPath: '/pharmacies'
+      preLoaderRoute: typeof PharmaciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/inventory': {
+      id: '/admin/inventory'
+      path: '/inventory'
+      fullPath: '/admin/inventory'
+      preLoaderRoute: typeof AdminInventoryRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/pharmacies': {
+      id: '/admin/pharmacies'
+      path: '/pharmacies'
+      fullPath: '/admin/pharmacies'
+      preLoaderRoute: typeof AdminPharmaciesRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/pharmacy/$id': {
+      id: '/pharmacy/$id'
+      path: '/pharmacy/$id'
+      fullPath: '/pharmacy/$id'
+      preLoaderRoute: typeof PharmacyIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AdminRouteRouteChildren {
+  AdminInventoryRoute: typeof AdminInventoryRoute
+  AdminPharmaciesRoute: typeof AdminPharmaciesRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteRouteChildren: AdminRouteRouteChildren = {
+  AdminInventoryRoute: AdminInventoryRoute,
+  AdminPharmaciesRoute: AdminPharmaciesRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
+  AdminRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRouteRoute: AdminRouteRouteWithChildren,
+  EmergencyRoute: EmergencyRoute,
+  PharmaciesRoute: PharmaciesRoute,
+  SearchRoute: SearchRoute,
+  PharmacyIdRoute: PharmacyIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
