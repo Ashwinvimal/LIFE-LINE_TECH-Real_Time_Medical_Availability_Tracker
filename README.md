@@ -2,7 +2,7 @@
 
 Implement exactly the screenshot and nothing else
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/acd117c6-f849-4351-b462-fd1778ccd22a).
+Continue developing this project in the (https://lovable.dev/projects/acd117c6-f849-4351-b462-fd1778ccd22a).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
 - **Stay in sync**: every change made in Lovable is committed straight to this repository.
