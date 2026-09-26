@@ -37,7 +37,7 @@ export function LocationBar() {
 
         <div className="flex w-full items-center gap-2 sm:w-auto">
           <Select
-            value={source === "manual" ? location?.label : undefined}
+            value={(source === "manual" && location?.label) || ""}
             onValueChange={(label) => {
               const area = manualAreas.find((a) => a.label === label);
               if (area) setManual(area);
