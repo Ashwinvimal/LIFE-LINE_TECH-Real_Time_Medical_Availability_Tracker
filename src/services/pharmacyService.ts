@@ -7,11 +7,11 @@ export function listPharmacies(snapshot = getSnapshot()): Pharmacy[] {
 }
 
 export interface NearbyOptions {
-  origin?: Coordinates;
-  openOnly?: boolean;
-  maxDistanceKm?: number;
-  query?: string;
-  includeInactive?: boolean;
+  origin?: Coordinates | undefined;
+  openOnly?: boolean | undefined;
+  maxDistanceKm?: number | undefined;
+  query?: string | undefined;
+  includeInactive?: boolean | undefined;
 }
 
 export function nearbyPharmacies(

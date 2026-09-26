@@ -7,10 +7,10 @@ import { formatDistance, formatHours } from "@/utils/format";
 
 export interface MapViewProps {
   center: { latitude: number; longitude: number };
-  userLocation?: { latitude: number; longitude: number } | null;
+  userLocation?: { latitude: number; longitude: number } | null | undefined;
   pharmacies: PharmacyWithDistance[];
-  selectedId?: string;
-  onSelect?: (id: string) => void;
+  selectedId?: string | undefined;
+  onSelect?: ((id: string) => void) | undefined;
 }
 
 function pin(color: string, ring: string) {

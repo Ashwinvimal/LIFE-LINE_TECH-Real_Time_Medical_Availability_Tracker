@@ -82,15 +82,15 @@ export interface InventoryRecord extends InventoryItem {
 /** A medicine availability hit for the patient-facing search. */
 export interface AvailabilityResult extends InventoryRecord {
   /** kilometres from the user, undefined when no location is known */
-  distanceKm?: number;
+  distanceKm?: number | undefined;
   isOpenNow: boolean;
 }
 
 export interface PharmacyWithDistance extends Pharmacy {
-  distanceKm?: number;
+  distanceKm?: number | undefined;
   isOpenNow: boolean;
   itemCount: number;
-  lastUpdatedAt?: string;
+  lastUpdatedAt?: string | undefined;
 }
 
 export interface Coordinates {

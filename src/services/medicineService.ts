@@ -46,10 +46,10 @@ export function listMedicines(snapshot = getSnapshot()): Medicine[] {
 
 export interface SearchOptions {
   query: string;
-  origin?: Coordinates;
-  openOnly?: boolean;
-  inStockOnly?: boolean;
-  maxDistanceKm?: number;
+  origin?: Coordinates | undefined;
+  openOnly?: boolean | undefined;
+  inStockOnly?: boolean | undefined;
+  maxDistanceKm?: number | undefined;
 }
 
 /** Patient-facing medicine availability search (partial name / generic match). */

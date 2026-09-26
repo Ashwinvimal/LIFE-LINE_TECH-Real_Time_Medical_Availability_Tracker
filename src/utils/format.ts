@@ -37,8 +37,8 @@ export function timeAgo(iso: string): string {
 export function isOpenNow(hours: OpeningHours, now = new Date()): boolean {
   if (hours.alwaysOpen) return true;
   const minutes = now.getHours() * 60 + now.getMinutes();
-  const [oh, om] = hours.opensAt.split(":").map(Number);
-  const [ch, cm] = hours.closesAt.split(":").map(Number);
+  const [oh = 0, om = 0] = hours.opensAt.split(":").map(Number);
+  const [ch = 23, cm = 59] = hours.closesAt.split(":").map(Number);
   const open = oh * 60 + om;
   const close = ch * 60 + cm;
   if (close <= open) return minutes >= open || minutes <= close; // spans midnight
